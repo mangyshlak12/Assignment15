@@ -26,20 +26,20 @@ export default {
 .toggle{
     position: relative;
     display: block;
-    width: 100px;
-    height: 50px;
+    width: 40px;
+    height: 20px;
     border-radius: 50px;
-    background: #222;
+    background: #d9e1cc;
     transition: 0.5s;
     cursor: pointer;
 }
 .indicator{
     position: absolute;
-    width: 50px;
-    height: 50px;
+    width: 20px;
+    height: 20px;
     left: 0;
     top: 0  ;
-    background: linear-gradient(to bottom, #444,#222);
+    background: gray;
     border-radius: 50%;
     transform: scale(0.9);
     opacity: 0.9;
@@ -49,17 +49,19 @@ export default {
 .active{
     position: relative;
     display: block;
-    width: 100px;
-    height: 50px;
-    border-radius: 50px;
+    width: 40px;
+    height: 20px;
+    border-radius: 20px;
     background: #222;
     transition: 0.5s;
     cursor: pointer;
     background-color: #d9e1cc;
 }
 .active .indicator{
-    left: 50px;
+    background: rgb(127, 59, 206);
+    left: 20px;
     transition: 0.5s;
 }
+
 
 </style>

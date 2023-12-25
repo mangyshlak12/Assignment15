@@ -1,11 +1,12 @@
 <template>
     <ul class="listContainer">
-    <li v-for="(item,index) in images" :key="index"><Icons :link="item" name="avatarr" :style="{right: 8 * check(index) + 'px'}"/></li>
+    <li :class="name" v-for="(item,index) in images" :key="index"><Icons :link="item" name="avatarrr" /></li>
     <li class="lastelement"  v-if="name === 'first' ">5+</li>
     </ul>
 </template>
 <script>
-import Icons from './icons.vue'
+import Icons from './Content/icons.vue';
+
 
 export default {
     data(){
@@ -19,7 +20,7 @@ export default {
             required: true
         },
         name:{
-            type: 'String',
+            type: String,
             required: true
         }
     },
@@ -30,6 +31,8 @@ export default {
         check(index){
             if(index!==1){
                 return 8 * (index-1);
+            }else{
+                return 0;
             }
         }
     }
@@ -41,11 +44,12 @@ ul{
     display: flex;
 }
 ul li{
-    width: 33px;
-    height: 33px;
-  border: 2px solid #d9e1cc;
-  border-radius: 50%;
+    width: 29px;
+    height: 29px;
+    border: 2px solid #d9e1cc;
+     border-radius: 50%;
 }
+
 .lastelement{
     display: flex;
     align-items: center;
@@ -55,6 +59,7 @@ ul li{
     background: rgba(123, 59, 196, 0.836);
     border-radius: 50%;
     position: relative;
+    
     right: 32px;
 }
 ul li:nth-child(2){

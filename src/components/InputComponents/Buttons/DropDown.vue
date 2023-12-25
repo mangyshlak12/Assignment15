@@ -3,7 +3,7 @@
     <div class="container">
         <div class="dropdown">
         <div  @click="isClicked()" :class="{'select-clicked': isClick, 'select': !isClick}">
-            <span class="selected">{{selectedItem}}</span>
+            <span class="selected">{{selected}}</span>
             <div :class="{'caret-rotate': isClick, 'caret': !isClick}"></div>
         </div>
         <ul :class="{'menu-open': isClick, 'menu': !isClick}">
@@ -21,26 +21,20 @@ export default {
              isSelect: false,
              items: [{
                 isSelect:false,
-                title: 'Framer'
+                title: 'EN'
              },
              {
                 isSelect:false,
-                title: 'Sketch'
+                title: 'KAZ'
              },
              {
                 isSelect:false,
-                title: 'Invision Studio'
+                title: 'RUS'
              },
-             {
-                isSelect:false,
-                title: 'Figma'
-             },
-             {
-                isSelect:false,
-                title: 'Adobe XD'
-             }  
+            
              ],
-             selectedItem: 'Figma'  
+              selected: this.selectedItem
+          
         }
     },
     methods:{
@@ -52,8 +46,14 @@ export default {
                 item.isSelect = false;
             });
             this.items[index].isSelect = true;
-            this.selectedItem = this.items[index].title;
+             this.selected = this.items[index].title;
             
+        }
+    },
+    props:{
+        selectedItem:{
+            type:String,
+            required: true
         }
     }
 }
@@ -64,53 +64,54 @@ export default {
    
 }
 .container{
-    
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .dropdown{
-    min-width: 15em;
     position: relative;
-    margin: 2em;
+    
 }
 .select{ 
-    background: #2a2f3b;
+    background: rgb(126, 38, 197);
     color: #fff;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1em;
-    border: 2px #2a2f3b solid;
-    border-radius: 0.5em;
+    gap: 10px;
+    font-size: 11px;
+    position: relative;
+    top: -6px;
+    padding: 11px 13px;
+    border: 1px #2a2f3b solid;
+    border-radius: 30px;
     cursor: pointer;
     transition: background 0.3s;
 }
 .select-clicked{
-    background: #2a2f3b;
+   background: rgb(126, 38, 197);
     color: #fff;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1em;
-    border: 2px #2a2f3b solid;
-    border-radius: 0.5em;
+    gap: 10px;
+    font-size: 11px;
+    position: relative;
+    top: -6px;
+    padding: 11px 13px;
+    border: 1px #2a2f3b solid;
+    border-radius: 30px;
     cursor: pointer;
     transition: background 0.3s;
-    border: 2px #26489a solid;
-    box-shadow: 0 0 0.8em #26489a;
 
 }
-.select:hover{
-    background: #323741;
 
-}
 .caret{
     width: 0;
     height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 6px solid #fff;
+    border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
+    border-top: 4px solid #fff;
     transition: 0.3s;
 }
 .caret-rotate{
@@ -124,13 +125,12 @@ export default {
 }
 .menu{
     list-style: none;
-    padding: 0.2em 0.5em;
-    background: #323741;
+    padding: 0.2em 0.5em;   
+     background: rgb(126, 38, 197);
     border: 1px solid #363a43;
     border-radius: 0.5em;
     color: #9fa5b5;
     position: absolute;
-    top: 3em;
     left: 50%;
     width:100% ;
     transform: translateX(-50%);
@@ -140,27 +140,22 @@ export default {
     z-index: 1;
 }
 .menu.menu-open li{
-    padding: 0.7em 0.5em;
-    margin: 0.3em 0;
-    border-radius: 0.5em;
-    border-radius: 0.5em;
     cursor: pointer;
 }
 .menu.menu-open li:hover{
-    background: #2a2d35;
+    
+    opacity: 0.5;
 }
 .active{
-    background: #23242a;
+    opacity: 0.5;
 }
 .menu-open{
      list-style: none;
     padding: 0.2em 0.5em;
-    background: #323741;
-    border: 1px solid #363a43;
+    background: rgb(126, 38, 197);
     border-radius: 0.5em;
-    color: #9fa5b5;
+    color: white;
     position: absolute;
-    top: 3em;
     left: 50%;
     width:100% ;
     transform: translateX(-50%);

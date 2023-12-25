@@ -11,7 +11,10 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
-    "vue": "^3.3.11"
+    "apexcharts": "^3.45.1",
+    "chart.js": "^4.4.1",
+    "vue": "^3.3.11",
+    "vue-apexcharts": "^1.6.2"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.6.6",

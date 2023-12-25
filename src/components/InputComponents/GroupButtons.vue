@@ -1,7 +1,6 @@
 <template>
     <div class="select">
-        <div class="option" v-for="(option,index) in options" :key="index" :class="{'active':option.isSelected, 'option': !option.isSelected}" @click="isChoosen(index)">{{option.option}}</div>
-       
+        <div class="option" v-for="(option,index) in options" :key="index" :class="{'active':option.isSelected, 'option': !option.isSelected}" @click="isChoosen(index)">{{option.option}}</div>  
     </div>
     
 </template>
@@ -9,19 +8,7 @@
 export default {
     data(){
         return{
-            options: [{
-                isSelected: false,
-                option: 'Option1'
-            },
-            {
-                isSelected: false,
-                option: 'Option2'
-            },
-            {
-                isSelected: false,
-                option: 'Option3'
-            }
-            ]
+           
        
         }
     },
@@ -32,7 +19,13 @@ export default {
                     });
                     this.options[index].isSelected = true;
                 }
+    },
+        props:{
+            options:{
+                type: Object,
+                required:true
             }
+        }
 }
 </script>
 <style scoped>
@@ -40,17 +33,27 @@ export default {
         display: flex;
         align-items: center;
         justify-content: center;
+        background: #d9e1cc;
+        border-radius: 20px;
+
     }
     .option{
-        border: 1px solid black;
-        padding: 5px 10px;
-        border-radius: 5px;
+        font-size: 12px;
+        padding: 10px 15px;
+        border-radius: 20px;
+        font-weight: 600;
+        color: #96A0AF;
         cursor: pointer;
     }
     .option:hover{
         transform: scale(1.1);
     }
     .active{
-        background: #d9e1cc;
+        background: white;
+        color: black;
+        font-weight: 700;
+        position: relative;
     }
+   
+
 </style>

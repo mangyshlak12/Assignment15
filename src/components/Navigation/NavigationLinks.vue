@@ -1,11 +1,10 @@
 <template>
     <ul class="listContainer">
-        
-          <li v-for="(item,index) in menu" :key="index" @click="clicktoNav(index)" :class="{'active': item.isClicked}">
-            <span v-if="item.isClicked" class="beforeA"></span>
+          <li v-for="(item,index) in menu" :key="index" @click="clicktoNav(index)" :class="{'active': checkToSelect(index)}">
+            <span v-if="checkToSelect(index)" class="beforeA"></span>
                 <div>
-                <a href="index1.html" >
-                    <Icons :link="images[index]"/>
+                <a :href="toCheck(index)">
+                    <Icons :link="images[index]" name=""/>
                     {{item.title}}
                 </a>
             </div>
@@ -54,18 +53,46 @@ export default {
             ]
         }
     },
-    props:{
-        images:{
-            type: Object,
-            required: true
-        }
-    },
+    props:['pagePath' , 'images'],
     methods:{
         clicktoNav(index){
+            console.log(this.pages);
+            console.log('hello')
             this.menu.map(item=>{
                 item.isClicked = false;
             })
             this.menu[index].isClicked = true;
+        },
+        toCheck(index){
+            if(index===0){
+                return this.pagePath[0].name;
+            }else if(index ===1 ){
+                 return this.pagePath[1].name;   
+            }else if(index === 2 ){
+                return this.pagePath[2].name;
+            }else if(index == 3){
+                return this.pagePath[3].name;
+            }else if(index == 4){
+                return this.pagePath[4].name;
+            }else{
+                return '';
+            }
+        }
+        ,
+        checkToSelect(index){
+            if(index===0){
+                return this.pagePath[0].isSelected;
+            }else if(index ===1 ){
+                 return this.pagePath[1].isSelected;   
+            }else if(index === 2 ){
+                return this.pagePath[2].isSelected;
+            }else if(index == 3){
+                return this.pagePath[3].isSelected;
+            }else if(index == 4){
+                return this.pagePath[4].isSelected;
+            }else{
+                return false;
+            }
         }
     },
     components:{
